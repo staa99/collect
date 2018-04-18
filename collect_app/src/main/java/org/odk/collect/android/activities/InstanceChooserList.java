@@ -32,6 +32,8 @@ import org.odk.collect.android.adapters.ViewSentListAdapter;
 import org.odk.collect.android.application.Collect;
 import org.odk.collect.android.dao.InstancesDao;
 import org.odk.collect.android.listeners.DiskSyncListener;
+import org.odk.collect.android.preferences.GeneralSharedPreferences;
+import org.odk.collect.android.preferences.PreferenceKeys;
 import org.odk.collect.android.provider.InstanceProviderAPI;
 import org.odk.collect.android.provider.InstanceProviderAPI.InstanceColumns;
 import org.odk.collect.android.tasks.InstanceSyncTask;
@@ -137,7 +139,15 @@ public class InstanceChooserList extends InstanceListActivity implements DiskSyn
                     // caller wants to view/edit a form, so launch formentryactivity
                     Intent parentIntent = this.getIntent();
                     Intent intent = new Intent(Intent.ACTION_EDIT, instanceUri);
-                    String formMode = parentIntent.getStringExtra(ApplicationConstants.BundleKeys.FORM_MODE);
+
+                    // check if caller has allowed forms to be editable after sending to the server
+                    // if they are editable, set form mode to edit_saved
+                    boolean editSentForms = (boolean) GeneralSharedPreferences.getInstance()
+                            .get(PreferenceKeys.KEY_EDIT_SENT_FORMS);
+
+                    String formMode = editSentForms ? ApplicationConstants.FormModes.EDIT_SAVED :
+                            parentIntent.getStringExtra(ApplicationConstants.BundleKeys.FORM_MODE);
+
                     if (formMode == null || ApplicationConstants.FormModes.EDIT_SAVED.equalsIgnoreCase(formMode)) {
                         intent.putExtra(ApplicationConstants.BundleKeys.FORM_MODE, ApplicationConstants.FormModes.EDIT_SAVED);
                     } else {

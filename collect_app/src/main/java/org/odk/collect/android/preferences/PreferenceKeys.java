@@ -18,6 +18,7 @@ public final class PreferenceKeys {
     public static final String KEY_AUTOSEND                 = "autosend";
     public static final String KEY_DELETE_AFTER_SEND        = "delete_send";
     public static final String KEY_COMPLETED_DEFAULT        = "default_completed";
+    public static final String KEY_EDIT_SENT_FORMS          = "edit_sent_forms";
     public static final String KEY_CONSTRAINT_BEHAVIOR      = "constraint_behavior";
     public static final String KEY_HIGH_RESOLUTION          = "high_resolution";
     public static final String KEY_IMAGE_SIZE               = "image_size";
@@ -79,6 +80,7 @@ public final class PreferenceKeys {
         hashMap.put(KEY_AUTOSEND,                   AUTOSEND_OFF);
         hashMap.put(KEY_DELETE_AFTER_SEND,          false);
         hashMap.put(KEY_COMPLETED_DEFAULT,          true);
+        hashMap.put(KEY_EDIT_SENT_FORMS,            false);
         hashMap.put(KEY_CONSTRAINT_BEHAVIOR,        CONSTRAINT_BEHAVIOR_ON_SWIPE);
         hashMap.put(KEY_HIGH_RESOLUTION,            true);
         hashMap.put(KEY_IMAGE_SIZE,                 "original_image_size");

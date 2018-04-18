@@ -22,6 +22,11 @@
             android:key="default_completed"
             android:summary="@string/default_completed_summary"
             android:title="@string/default_completed" />
+        <CheckBoxPreference
+            android:key="edit_sent_forms"
+            android:summary="Allow modification of sent forms"
+            android:title="Edit Sent Forms"
+            android:defaultValue="false"/>
         <ListPreference
             android:dialogTitle="@string/constraint_behavior"
             android:entries="@array/constraint_behavior_entries"

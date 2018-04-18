@@ -12,6 +12,8 @@
 -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation"
            tools:locale="en">
+    <string name="footer_text">Designed by BEMMTech Consulting</string>
+    <string name="header_text">IDH SUPPORT PROGRAM</string>
     <string name="show_password">Show password</string>
     <string name="activity_not_found">No activity found to handle: %s</string>
     <string name="view_image">View Image</string>
