@@ -88,7 +88,6 @@
   <string name="parse_legacy_formlist_failed">Die server het nie \'n beskikbare-vorms dokument verskaf wat versoenbaar is met Aggregate 0.9.x nie. : %s</string>
   <string name="parse_openrosa_formlist_failed">Die server het nie \'n beskikbare-vorms dokument verskaf wat versoenbaar is met die OpenRosa weergawe 1.0 standaard nie: %s</string>
   <string name="password">Wagwoord</string>
-  <string name="play_audio">Speel Klank</string>
   <string name="play_video">Speel Video</string>
   <string name="please_wait">Wag asseblief \'n paar sekondes.</string>
   <string name="please_wait_long">Wag asseblief. Hierdie kan dalk \'n paar minute neem.</string>
@@ -250,7 +249,6 @@
   <string name="other_preferences">Ander platform verstellings</string>
   <string name="drive_get_file">Besig om %1$s en media leêrs te haal.</string>
   <string name="no_google_account">Geen Google rekening geselekteer nie!</string>
-  <string name="invalid_oauth">Ongeldige OAuth 2 token</string>
   <string name="notification_error">Fout met vertoon van kennisgewing teks</string>
   <string name="delete_after_send">Verwyder na stuur</string>
   <string name="delete_after_send_summary">Verwyder gefinaliseerde vorms en media nadat dit server toe gestuur is</string>
