@@ -207,6 +207,7 @@
           <my_trigger/>
           <meta>
             <instanceID/>
+            <deprecatedID/>
           </meta>
         </all-widgets>
       </instance>

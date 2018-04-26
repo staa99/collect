@@ -199,7 +199,7 @@ public abstract class FormHierarchyActivity extends AppCompatActivity implements
             // display
             // everything enclosed within that group.
             String contextGroupRef = "";
-            formList = new ArrayList<HierarchyElement>();
+            formList = new ArrayList<>();
 
             // If we're currently at a repeat node, record the name of the node and step to the next
             // node to display.
@@ -301,7 +301,7 @@ public abstract class FormHierarchyActivity extends AppCompatActivity implements
                         if (!fp.isReadOnly() || (label != null && label.length() > 0)) {
                             // show the question if it is an editable field.
                             // or if it is read-only and the label is not blank.
-                            String answerDisplay = FormEntryPromptUtils.getAnswerText(fp, this);
+                            String answerDisplay = FormEntryPromptUtils.getAnswerText(fp, this, formController);
                             formList.add(
                                     new HierarchyElement(FormEntryPromptUtils.markQuestionIfIsRequired(label, fp.isRequired()), answerDisplay, null,
                                             Color.WHITE, QUESTION, fp.getIndex()));

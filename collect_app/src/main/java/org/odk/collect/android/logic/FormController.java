@@ -28,12 +28,15 @@ import org.javarosa.core.model.ValidateOutcome;
 import org.javarosa.core.model.condition.EvaluationContext;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.StringData;
+import org.javarosa.core.model.data.UncastData;
 import org.javarosa.core.model.instance.FormInstance;
 import org.javarosa.core.model.instance.TreeElement;
 import org.javarosa.core.services.IPropertyManager;
 import org.javarosa.core.services.PrototypeManager;
 import org.javarosa.core.services.transport.payload.ByteArrayPayload;
 import org.javarosa.core.util.JavaRosaCoreModule;
+import org.javarosa.core.util.externalizable.DeserializationException;
+import org.javarosa.core.util.externalizable.PrototypeFactory;
 import org.javarosa.form.api.FormEntryCaption;
 import org.javarosa.form.api.FormEntryController;
 import org.javarosa.form.api.FormEntryModel;
@@ -48,11 +51,14 @@ import org.odk.collect.android.exception.JavaRosaException;
 import org.odk.collect.android.utilities.TimerLogger;
 import org.odk.collect.android.views.ODKView;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 import timber.log.Timber;
 
@@ -73,8 +79,11 @@ public class FormController {
     /**
      * OpenRosa metadata tag names.
      */
-    private static final String INSTANCE_ID = "instanceID";
+    public static final String INSTANCE_ID = "instanceID";
     private static final String INSTANCE_NAME = "instanceName";
+    private static final String IDH_INSTANCE_ID = "IDH_instanceId";
+    public static final String FARMERS_NAME = "farmersname";
+    public static final String FARMERS_ID = "farmersid";
 
     /*
      * Non OpenRosa metadata tag names
@@ -351,7 +360,7 @@ public class FormController {
     /**
      * TODO: We need a good description of what this does, exactly, and why.
      */
-    private FormInstance getInstance() {
+    public FormInstance getInstance() {
         return formEntryController.getModel().getForm().getInstance();
     }
 
@@ -1073,6 +1082,14 @@ public class FormController {
     public ByteArrayPayload getFilledInFormXml() throws IOException {
         // assume no binary data inside the model.
         FormInstance datamodel = getInstance();
+        TreeElement idhInstanceId = datamodel.getRoot().getChild(IDH_INSTANCE_ID, 0);
+        if (idhInstanceId != null && idhInstanceId.getValue() == null)
+        {
+            IAnswerData answerData = new StringData();
+            answerData.setValue(UUID.randomUUID().toString());
+            idhInstanceId.setAnswer(answerData);
+        }
+
         XFormSerializingVisitor serializer = new XFormSerializingVisitor();
 
         return (ByteArrayPayload) serializer.createSerializedPayload(datamodel);

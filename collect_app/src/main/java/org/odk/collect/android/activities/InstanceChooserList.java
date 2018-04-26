@@ -153,6 +153,7 @@ public class InstanceChooserList extends InstanceListActivity implements DiskSyn
                     } else {
                         intent.putExtra(ApplicationConstants.BundleKeys.FORM_MODE, ApplicationConstants.FormModes.VIEW_SENT);
                     }
+                    intent.resolveActivity(getPackageManager());
                     startActivity(intent);
                 }
                 finish();
